@@ -631,25 +631,6 @@
             digital marketing & growth solutions.
           </p>
         </div>
-        <div class="footer-subscribe">
-          <h3 class="footer-subscribe-title">Subscribe</h3>
-          <form class="subscribe-form" action="#" method="post">
-            <label for="subscribe-email" class="sr-only">Email</label>
-            <div class="input-with-icon">
-              <svg width="16" height="16" fill="#7a7a7a" aria-hidden="true">
-                <use href="./images/icons.svg#icon-envelope"></use>
-              </svg>
-              <input
-                id="subscribe-email"
-                name="subscribe_email"
-                type="email"
-                placeholder="E-mail"
-                required
-              />
-            </div>
-            <button class="btn" type="submit">Subscribe</button>
-          </form>
-        </div>
         <div class="footer-social">
           <p class="footer-social-title">Social media</p>
           <ul class="social-list footer-social-list">
@@ -727,22 +708,48 @@
             </li>
           </ul>
         </div>
+        <div class="footer-subscribe">
+          <h3 class="footer-subscribe-title">Subscribe</h3>
+          <form class="subscribe-form" action="#" method="post">
+            <label for="subscribe-email" class="sr-only">Email</label>
+            <input
+              class="subscribe-input"
+              id="subscribe-email"
+              name="subscribe_email"
+              type="email"
+              placeholder="E-mail"
+              required
+            />
+            <button class="btn" type="submit">
+              <span>Subscribe</span>
+              <svg width="24" height="24" aria-hidden="true">
+                <use href="./images/icons.svg#icon-send"></use>
+              </svg>
+            </button>
+          </form>
+        </div>
       </div>
     </footer>
-    <!-- Modal markup placed after footer -->
-    <div class="backdrop" id="modal-backdrop" aria-hidden="true">
+    <div class="backdrop" id="modal" aria-hidden="true">
       <div
-        class="modal"
-        id="modal"
+        class="modal-dialog-window"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
       >
-        <button class="modal-close" type="button" aria-label="Close modal">
-          &times;
+        <button
+          class="modal-close-button"
+          type="button"
+          aria-label="Close modal"
+        >
+          <svg width="8" height="8" aria-hidden="true">
+            <use href="./images/icons.svg#icon-close"></use>
+          </svg>
         </button>
-        <h2 id="modal-title" class="modal-title">Request a Service</h2>
-        <form class="modal-form" action="#" method="post">
+        <p id="modal-title" class="modal-title">
+          Leave your contacts and we will call you back
+        </p>
+        <form class="contact-form" action="#" method="post">
           <div class="form-row">
             <label for="app-name">Your name</label>
             <div class="input-with-icon">
@@ -822,28 +829,34 @@
     <script>
       (function () {
         const openBtn = document.querySelector('.hero-button');
-        const backdrop = document.getElementById('modal-backdrop');
-        const modal = backdrop && backdrop.querySelector('.modal');
-        const closeBtn = backdrop && backdrop.querySelector('.modal-close');
+        const modalContainer = document.getElementById('modal');
+        const closeBtn =
+          modalContainer && modalContainer.querySelector('.modal-close-button');
 
         function openModal() {
-          backdrop.classList.add('is-open');
-          backdrop.setAttribute('aria-hidden', 'false');
+          if (!modalContainer) return;
+          modalContainer.classList.add('is-open');
+          modalContainer.setAttribute('aria-hidden', 'false');
         }
         function closeModal() {
-          backdrop.classList.remove('is-open');
-          backdrop.setAttribute('aria-hidden', 'true');
+          if (!modalContainer) return;
+          modalContainer.classList.remove('is-open');
+          modalContainer.setAttribute('aria-hidden', 'true');
         }
 
         if (openBtn) openBtn.addEventListener('click', openModal);
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
-        if (backdrop) {
-          backdrop.addEventListener('click', (e) => {
-            if (e.target === backdrop) closeModal();
+        if (modalContainer) {
+          modalContainer.addEventListener('click', (e) => {
+            if (e.target === modalContainer) closeModal();
           });
         }
         document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && backdrop.classList.contains('is-open'))
+          if (
+            e.key === 'Escape' &&
+            modalContainer &&
+            modalContainer.classList.contains('is-open')
+          )
             closeModal();
         });
       })();
