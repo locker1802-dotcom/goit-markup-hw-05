@@ -631,6 +631,25 @@
             digital marketing & growth solutions.
           </p>
         </div>
+        <div class="footer-subscribe">
+          <h3 class="footer-subscribe-title">Subscribe to our newsletter</h3>
+          <form class="subscribe-form" action="#" method="post">
+            <label for="subscribe-email" class="sr-only">Email</label>
+            <div class="input-with-icon">
+              <svg width="16" height="16" fill="#7a7a7a" aria-hidden="true">
+                <use href="./images/icons.svg#icon-envelope"></use>
+              </svg>
+              <input
+                id="subscribe-email"
+                name="subscribe_email"
+                type="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
         <div class="footer-social">
           <p class="footer-social-title">Social media</p>
           <ul class="social-list footer-social-list">
@@ -710,5 +729,123 @@
         </div>
       </div>
     </footer>
+    <!-- Modal markup placed after footer -->
+    <div class="backdrop" id="modal-backdrop" aria-hidden="true">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button class="modal-close" type="button" aria-label="Close modal">
+          &times;
+        </button>
+        <h2 id="modal-title" class="modal-title">Request a Service</h2>
+        <form class="modal-form" action="#" method="post">
+          <div class="form-row">
+            <label for="app-name">Your name</label>
+            <div class="input-with-icon">
+              <svg width="16" height="16" fill="#7a7a7a" aria-hidden="true">
+                <use href="./images/icons.svg#icon-user"></use>
+              </svg>
+              <input
+                id="app-name"
+                name="app_name"
+                type="text"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="app-email">Email</label>
+            <div class="input-with-icon">
+              <svg width="16" height="16" fill="#7a7a7a" aria-hidden="true">
+                <use href="./images/icons.svg#icon-envelope"></use>
+              </svg>
+              <input
+                id="app-email"
+                name="app_email"
+                type="email"
+                placeholder="name@example.com"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="app-phone">Phone</label>
+            <div class="input-with-icon">
+              <svg width="16" height="16" fill="#7a7a7a" aria-hidden="true">
+                <use href="./images/icons.svg#icon-phone"></use>
+              </svg>
+              <input
+                id="app-phone"
+                name="app_phone"
+                type="tel"
+                placeholder="+1 (000) 000-0000"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="app-message">Message</label>
+            <textarea
+              id="app-message"
+              name="app_message"
+              rows="4"
+              placeholder="Your message"
+            ></textarea>
+          </div>
+          <div class="form-row checkbox-row">
+            <div>
+              <input id="agree" name="agree_terms" type="checkbox" />
+              <label for="agree">
+                <span class="custom-box">
+                  <svg width="14" height="14" fill="#fff" aria-hidden="true">
+                    <use href="./images/icons.svg#icon-check"></use>
+                  </svg>
+                </span>
+                <span
+                  >I accept the terms and conditions of the
+                  <a href="#">Privacy Policy</a></span
+                >
+              </label>
+            </div>
+          </div>
+          <div class="form-row">
+            <button class="btn" type="submit">Send request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const openBtn = document.querySelector('.hero-button');
+        const backdrop = document.getElementById('modal-backdrop');
+        const modal = backdrop && backdrop.querySelector('.modal');
+        const closeBtn = backdrop && backdrop.querySelector('.modal-close');
+
+        function openModal() {
+          backdrop.classList.add('is-open');
+          backdrop.setAttribute('aria-hidden', 'false');
+        }
+        function closeModal() {
+          backdrop.classList.remove('is-open');
+          backdrop.setAttribute('aria-hidden', 'true');
+        }
+
+        if (openBtn) openBtn.addEventListener('click', openModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (backdrop) {
+          backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) closeModal();
+          });
+        }
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && backdrop.classList.contains('is-open'))
+            closeModal();
+        });
+      })();
+    </script>
   </body>
 </html>
