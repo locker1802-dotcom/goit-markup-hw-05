@@ -5,6 +5,7 @@
 .footer-inner {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
 }
