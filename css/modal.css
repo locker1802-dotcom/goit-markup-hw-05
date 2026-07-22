@@ -5,9 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.6);
-  visibility: hidden;
-  opacity: 0;
+  background: rgba(46, 47, 66, 0.4);
   pointer-events: none;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
@@ -23,15 +21,20 @@
 }
 
 #modal .modal-dialog-window {
-  background: #fff;
+  background: #fcfcfc;
   max-width: 408px;
   width: 90%;
   border-radius: 4px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12),
+    0 2px 1px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1;
   transform: translateY(20px);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  padding: 72px 24px 24px 24px;
 }
 
 .modal-close-button {
@@ -46,7 +49,7 @@
   justify-content: center;
   padding: 0;
   background-color: #e7e9fc;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(46, 47, 66, 0.4);
   cursor: pointer;
   color: #2e2f42;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -72,22 +75,42 @@
 }
 
 .contact-form .form-row {
-  margin-bottom: 14px;
+  margin-bottom: 8px;
+}
+
+.contact-form .form-row:nth-child(4) {
+  margin-bottom: 16px;
+}
+
+.contact-form .form-row:nth-child(5) {
+  margin-bottom: 24px;
+}
+
+.contact-form .form-row:last-child {
+  margin-bottom: 0;
 }
 
 .contact-form label {
   display: block;
-  font-size: 14px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: #8e8f99;
 }
 
 .input-with-icon {
   position: relative;
 }
 
+.input-with-icon:focus-within svg {
+  fill: #4d5ae5;
+}
+
 .input-with-icon svg {
   position: absolute;
-  left: 12px;
+  left: 16px;
   top: 50%;
   transform: translateY(-50%);
   fill: #7a7a7a;
@@ -96,9 +119,10 @@
 
 .input-with-icon input {
   width: 100%;
-  padding: 10px 12px 10px 36px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  height: 40px;
+  left: 38px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
   font-size: 14px;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -106,7 +130,7 @@
 .input-with-icon input:focus {
   outline: none;
   border-color: #0077ff;
-  box-shadow: 0 0 0 4px rgba(0, 119, 255, 0.08);
+  box-shadow: #4d5ae5;
 }
 
 .input-with-icon input:focus+svg,
@@ -117,10 +141,12 @@
 textarea {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
   resize: none;
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
 }
 
 textarea:focus {
@@ -152,7 +178,7 @@ textarea:focus {
   height: 18px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background: #fcfcfc;
+  background: #fff;
   transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -173,17 +199,23 @@ textarea:focus {
 
 .btn {
   display: inline-block;
-  padding: 10px 18px;
+  padding-block: 8px;
+  padding-inline: 24px;
+  width: 169px;
+  height: 56px;
   background: #0077ff;
   color: #fff;
   border: 0;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
 }
 
 .btn:hover {
-  background: #005fcc;
+  background: #404bbf;
 }
 
 /* ensure icons in inputs are vertically centered (redundant but explicit) */
@@ -192,14 +224,13 @@ textarea:focus {
 }
 
 /* small responsive adjustments */
-@media (max-width:420px) {
+@media (max-width: 720px) {
   .modal-dialog-window {
-    padding: 18px;
     position: relative;
     width: calc(100% - 30px);
     max-width: 408px;
     min-height: 584px;
-    background: #fcfcfc;
+    background: #fff;
     border-radius: 4px;
     padding: 72px 24px 24px 24px;
     box-shadow:
