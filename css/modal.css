@@ -21,7 +21,7 @@
 }
 
 #modal .modal-dialog-window {
-  background: #fcfcfc;
+  background-color: #fcfcfc;
   max-width: 408px;
   width: 90%;
   border-radius: 4px;
@@ -31,7 +31,6 @@
     0 2px 1px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1;
-  transform: translateY(0);
   padding: 72px 24px 24px 24px;
 }
 
@@ -78,14 +77,17 @@
 
 .contact-form .form-row:nth-child(4) {
   margin-bottom: 16px;
+
 }
 
 .contact-form .form-row:nth-child(5) {
   margin-bottom: 24px;
+
 }
 
 .contact-form .form-row:last-child {
-  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .contact-form label {
@@ -111,17 +113,18 @@
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  fill: #7a7a7a;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  fill: #2e2f42;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .input-with-icon input {
   width: 100%;
   height: 40px;
   padding-left: 38px;
+  padding-right: 16px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
-  font-size: 14px;
+  background-color: transparent;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -136,13 +139,20 @@
 
 textarea {
   width: 100%;
-  padding: 10px 12px;
+  height: 120px;
+  padding: 8px 16px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
+  background-color: transparent;
   resize: none;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+textarea::placeholder {
+  color: rgba(46, 47, 66, 0.4);
 }
 
 textarea:focus {
@@ -160,21 +170,24 @@ textarea:focus {
 .checkbox-row label {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
   user-select: none;
 }
 
 .custom-box {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff;
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  background-color: transparent;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkbox-input:checked+label .custom-box {
+  background-color: #404bbf;
+  border-color: #404bbf;
 }
 
 .custom-box svg {
@@ -184,8 +197,8 @@ textarea:focus {
 }
 
 .checkbox-row input[type="checkbox"]:checked+label .custom-box {
-  background: #0077ff;
-  border-color: #0077ff;
+  background-color: #404bbf;
+  border-color: #404bbf;
 }
 
 .checkbox-row input[type="checkbox"]:checked+label .custom-box svg {
@@ -193,24 +206,35 @@ textarea:focus {
 }
 
 .btn {
-  display: inline-block;
-  padding-block: 8px;
-  padding-inline: 24px;
-  width: 169px;
+  min-width: 169px;
   height: 56px;
   background: #0077ff;
   color: #fff;
   border: 0;
   border-radius: 4px;
-  cursor: pointer;
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
+  background-color: #4d5ae5;
+  color: #fff;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn:hover {
-  background: #404bbf;
+.btn:hover,
+.btn:focus {
+  background-color: #404bbf;
+}
+
+/* Текст политики */
+.policy-text {
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: #8e8f99;
+}
+
+/* Ссылка Privacy Policy */
+.policy-link {
+  color: #4d5ae5;
+  text-decoration: underline;
 }
 
 /* ensure icons in inputs are vertically centered (redundant but explicit) */
